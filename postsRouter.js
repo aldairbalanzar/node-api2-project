@@ -48,6 +48,19 @@ router.get('/:id', (req, res) => {
     });
   });
 
+  router.delete('/:id', (req, res) => {
+    const id = req.params.id;
+    Posts.remove(id);
+    res.status(200).json({ message: 'Post removed' });
+});
+
+router.put('/:id', (req, res) => {
+    const id = req.params.id;
+    const updatedPost = req.body;
+    Posts.update(id, updatedPost);
+    res.status(200).json({ message: 'Post updated' });
+})
+
   router.get('/:id/comments', (req, res) => {
     const id = req.params.id
     Posts.findPostComments(id)
@@ -76,13 +89,6 @@ router.get('/:id', (req, res) => {
         });
     });
   });
-
-  router.delete('/:id', (req, res) => {
-      const id = req.params.id;
-      Posts.remove(id);
-      res.status(200).json({ message: 'Post removed' });
-  })
-
 
 
 module.exports = router;
