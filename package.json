@@ -5,7 +5,9 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js"
+    "server": "nodemon index.js",
+    "seed": "knex seed:run "
+
   },
   "dependencies": {
     "express": "^4.17.1",
